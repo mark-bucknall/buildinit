@@ -38,14 +38,15 @@ module.exports = function (grunt) {
      * Set project info
      */
     project: {
-      src: '/assets/',
-      app: 'app',
+      src: 'assets/',
+      app: 'app/',
       assets: '<%= project.src %>',
       css: [
-        '<%= project.src %>/sass/style.scss'
+        '<%= project.src %>sass/style.scss'
       ],
       js: [
-        '<%= project.src %>js/*.js'
+        '<%= project.src %>js/*.js',
+        '<%= project.src %>js/vendor/*.js'
       ]
     },
 
@@ -105,7 +106,7 @@ module.exports = function (grunt) {
     concat: {
       dev: {
         files: {
-          '<%= project.assets %>/js/scripts.min.js': '<%= project.js %>'
+          '<%= project.assets %>js/scripts.min.js': '<%= project.js %>'
         }
       },
       options: {
@@ -126,7 +127,7 @@ module.exports = function (grunt) {
       },
       dist: {
         files: {
-          '<%= project.assets %>/js/scripts.min.js': '<%= project.js %>'
+          '<%= project.assets %>js/scripts.min.js': '<%= project.js %>'
         }
       }
     },
@@ -143,7 +144,7 @@ module.exports = function (grunt) {
           banner: '<%= tag.banner %>'
         },
         files: {
-          '<%= project.assets %>/css/style.min.css': '<%= project.css %>'
+          '<%= project.assets %>css/style.min.css': '<%= project.css %>'
         }
       },
       dist: {
@@ -152,7 +153,7 @@ module.exports = function (grunt) {
           banner: '<%= tag.banner %>'
         },
         files: {
-          '<%= project.assets %>/css/style.min.css': '<%= project.css %>'
+          '<%= project.assets %>css/style.min.css': '<%= project.css %>'
         }
       }
     },
@@ -175,11 +176,11 @@ module.exports = function (grunt) {
      */
     watch: {
       concat: {
-        files: '<%= project.src %>/js/{,*/}*.js',
+        files: '<%= project.assets %>js/{,*/}*.js',
         tasks: ['concat:dev', 'jshint']
       },
       sass: {
-        files: '<%= project.src %>/scss/{,*/}*.{scss,sass}',
+        files: '<%= project.assets %>sass/{,*/}*.{scss,sass}',
         tasks: ['sass:dev']
       },
       livereload: {
@@ -187,10 +188,11 @@ module.exports = function (grunt) {
           livereload: LIVERELOAD_PORT
         },
         files: [
-          '<%= project.app %>/{,*/}*.html',
-          '<%= project.assets %>/css/*.css',
-          '<%= project.assets %>/js/{,*/}*.js',
-          '<%= project.assets %>/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%= project.app %>{,*/}*.html',
+          '<%= project.app %>{,*/}*.php',
+          '<%= project.assets %>css/*.css',
+          '<%= project.assets %>js/{,*/}*.js',
+          '<%= project.assets %>{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
     }
