@@ -1,14 +1,13 @@
 {
-  "name": "fireshell",
-  "title": "Fiercely quick and opinionated front-ends",
-  "url": "http://getfireshell.com",
-  "author": "Todd Motto",
-  "copyright": "2013",
+  "name": "build",
+  "title": "build",
+  "url": "http://build.com",
+  "author": "Callam Williams",
+  "copyright": "2014",
   "version": "1.0.0",
-  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "http://github.com/toddmotto/fireshell.git"
+    "url": "http://github.com/Antifaith/"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
